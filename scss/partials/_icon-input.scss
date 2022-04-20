@@ -1,0 +1,47 @@
+.icon-input {
+    @include flex-box($gap: 0.5rem);
+    height: var(--height);
+    position: relative;
+    color: var(--first-grey);
+    width: 50%;
+    // background-color: red;
+    input {
+        outline: none;
+        border: 1px solid #888;
+        border-radius: 3px;
+        font-size: inherit;
+        width: 100%;
+        max-width: 16rem;
+        height: 100%;
+        padding: 0.7rem 1rem 0.7rem 3rem;
+        &:focus {
+            border-color: var(--second-blue);
+            border-width: 2px;
+            & + button {
+                display: inline-block;
+                color: #888d;
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+        &:not(:placeholder-shown) {
+            & + button {
+                display: inline-block;
+                color: var(--second-blue);
+                &:hover {
+                    color: darken(#1a73e8, 5);
+                    background-color: lighten(#1a73e8, 45);
+                }
+            }
+        }
+    }
+    i {
+        position: absolute;
+        font-size: 1.2rem;
+        left: 1rem;
+    }
+    button {
+        display: none;
+    }
+}

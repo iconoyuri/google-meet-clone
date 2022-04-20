@@ -1,0 +1,156 @@
+@mixin hover-color-btn($background-color) {
+    background-color: rgba($background-color, 0.3);
+    &:hover {
+        background-color: rgba(lighten($background-color, 10), 0.35);
+    }
+}
+.blue-btn {
+    @include flex-box($content: center, $gap: 0.5rem);
+    border-radius: 3px;
+    padding: 0 0.8rem;
+    height: var(--height);
+    background-color: var(--second-blue);
+    color: white;
+    font-weight: 500;
+    &:hover {
+        background-color: darken(#1a73e8, 5);
+    }
+    svg {
+        fill: white;
+    }
+}
+.white-blue-btn {
+    @include flex-box($content: center, $gap: 0.7rem);
+    color: var(--second-blue);
+    height: var(--height);
+    font-weight: 500;
+    padding: 0 0.8rem;
+    border-radius: 3px;
+    &:hover {
+        color: darken(#1a73e8, 0.8);
+        background-color: lighten(#1a73e8, 45);
+    }
+}
+button {
+    border: none;
+    box-shadow: none;
+    background-color: inherit;
+}
+.ripple-btn {
+    @include flex-box($content: center);
+    --dims: 2.7rem;
+    position: relative;
+    svg {
+        height: calc(var(--dims) - 1.1rem);
+        width: calc(var(--dims) - 1.1rem);
+    }
+    i {
+        font-size: 1.4rem;
+    }
+    height: var(--dims);
+    width: var(--dims);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    &:hover {
+        background-color: #9992;
+    }
+}
+.rippler {
+    --btn-ripple-animation: empty-value;
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        z-index: -1;
+        border-radius: 50%;
+        animation-timing-function: ease;
+        animation-name: var(--btn-ripple-animation);
+    }
+}
+@keyframes btn-ripple {
+    0% {
+        background-color: inherit;
+        width: 0;
+        height: 0;
+    }
+    10% {
+        background-color: #2223;
+        height: var(--dims);
+        width: var(--dims);
+    }
+}
+.white-btn {
+    border: 1px solid #5554;
+    border-radius: 3px;
+    padding: 0.7rem 1.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    &:hover {
+        background-color: #7771;
+    }
+    &:active {
+        background-color: #ddda;
+        box-shadow: 0px 3px 3px #0002;
+    }
+    &.round {
+        border-radius: 3rem;
+        padding: 0.5rem 1rem;
+    }
+}
+.icon-btn {
+    @include flex-box($content: center, $gap: 0);
+    --dims: 2.5rem;
+    width: var(--dims);
+    height: var(--dims);
+    i,
+    svg {
+        color: #eee;
+        fill: #eee;
+        font-size: 1.2em;
+    }
+    svg {
+        width: 1.2em;
+    }
+    .icon.two-icons {
+        .second {
+            display: none;
+        }
+    }
+    &.active {
+        .icon.two-icons {
+            .first{
+                display: none;
+            }
+            .second {
+                display: initial;
+            }
+        }
+    }
+    &.oval-btn {
+        border-radius: 5rem;
+        width: 4rem;
+    }
+    &.oval-btn,
+    &.active.clck-red {
+        $color: rgb(252, 72, 59);
+        background-color: $color !important;
+        &:hover {
+            background-color: lighten($color, 5) !important;
+        }
+    }
+    &.active.clck-blue {
+        $color: rgb(156, 190, 255);
+        background-color: $color !important;
+        &:hover {
+            background-color: lighten($color, 5) !important;
+        }
+        i,
+        svg {
+            color: var(--background-color);
+            fill: var(--background-color);
+        }
+    }
+}

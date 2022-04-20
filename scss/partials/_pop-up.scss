@@ -1,0 +1,64 @@
+.pop-up {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    &.visible {
+        z-index: 10;
+        opacity: 1;
+    }
+    &.newMeeting-pp {
+        width: 28rem;
+        left: 0;
+        transform: scale(0.9);
+        transform-origin: left;
+        transition: transform 0.2s, opacity 0.1s;
+        &.visible {
+            transform: scale(1);
+        }
+    }
+    &.assistance-pp,
+    &.google-apps-pp,
+    &.account-options-pp {
+        top: 130%;
+        height: calc(100vh - 3.5rem);
+        max-height: 25rem;
+        pointer-events: none;
+        box-shadow: 0 0 10px #0005;
+        border-radius: 5px;
+        overflow: auto;
+        &.visible {
+            pointer-events: auto;
+        }
+    }
+    &.assistance-pp {
+        right: 0;
+        transform: scaleX(0.8) scaleY(0.9);
+        transform-origin: top right;
+        height: fit-content;
+        transition: transform 0.2s, opacity 0.1s;
+        &.visible {
+            transform: scale(1);
+        }
+    }
+    &.google-apps-pp {
+        right: 0;
+    }
+    &.account-options-pp {
+        height: fit-content;
+        width: 22rem;
+        max-height: 80vh;
+        overflow: auto;
+        right: 0;
+    }
+}
+
+.settings-container{
+    .device{
+        .device-options{
+            position: relative;
+            .pop-up{
+                bottom: 0;
+            }
+        }
+    }
+}

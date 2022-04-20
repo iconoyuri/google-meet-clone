@@ -1,0 +1,31 @@
+.line-list {
+    background-color: white;
+    padding: 0.5rem 0;
+    width: 100%;
+    box-shadow: 0 0 10px #0005;
+    font-size: 0.9em;
+    @include flex-box($direction: column, $items: flex-start, $gap: 0);
+    i {
+        color: #222;
+    }
+    .line {
+        @include flex-box($gap: 1.5rem, $items: flex-start);
+        width: 100%;
+        padding: 1rem 1.5rem;
+        &:hover {
+            background-color: #0001;
+        }
+        svg {
+            fill: #222;
+        }
+        p {
+            color: #333;
+        }
+    }
+    &.smaller {
+        padding: 0;
+        .line {
+            padding: 0.6rem 1.2rem;
+        }
+    }
+}
